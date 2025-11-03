@@ -1,0 +1,14 @@
+<Material Name="nrt_eye.png.001_nrt_eye.png">
+    <Shader Vertex="Light/Light.hlsl" Pixel="Light/Light.hlsl"/>
+    <Texture>
+        <DiffuseMap Diffuse="Resources\Textures\Model\Naruto\nrt_eye.png"/>
+        <SpecularMap Specular="Resources/Textures/Color/White.png"/>
+        <NormalMap Normal="Resources/Textures/Color/White.png"/>
+    </Texture>
+    <Property Shininess="9.6078463" HasNormalMap="0">
+        <Diffuse R="1" G="1" B="1" A="1"/>
+        <Specular R="0.68627453" G="0.68627453" B="0.68627453" A="1"/>
+        <Ambient R="1" G="1" B="1" A="1"/>
+        <Emissive R="0" G="0" B="0" A="1"/>
+    </Property>
+</Material>
