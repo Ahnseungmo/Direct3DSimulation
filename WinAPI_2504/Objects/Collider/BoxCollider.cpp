@@ -151,23 +151,19 @@ void BoxCollider::FitSize(vector<ModelMesh*> meshes)
 {
 	if (meshes.empty()) return;
 
-	// AABB 최소/최대 좌표 초기화
 	Vector3 minPos(FLT_MAX, FLT_MAX, FLT_MAX);
 	Vector3 maxPos(-FLT_MAX, -FLT_MAX, -FLT_MAX);
 
-	// 모든 모델 메쉬 순회
 	for (ModelMesh* mesh : meshes)
 	{
 		if (!mesh) continue;
 
-		// 메쉬의 모든 버텍스 가져오기
 		const vector<ModelVertex>& vertices = mesh->GetData().vertices;
 
 		for (const ModelVertex& v : vertices)
 		{
 			Vector3 pos = v.pos;
 
-			// 최소 / 최대값 갱신
 			minPos.x = min(minPos.x, pos.x);
 			minPos.y = min(minPos.y, pos.y);
 			minPos.z = min(minPos.z, pos.z);
@@ -178,14 +174,11 @@ void BoxCollider::FitSize(vector<ModelMesh*> meshes)
 		}
 	}
 
-	// 계산된 박스 크기
 	size = maxPos - minPos;
 
-	// 박스 중심을 모델 중심으로 이동
 	Vector3 center = (minPos + maxPos) * 0.5f;
 	SetLocalPosition(center);
 
-	// 메쉬 갱신
 	UpdateMesh();
 }
 

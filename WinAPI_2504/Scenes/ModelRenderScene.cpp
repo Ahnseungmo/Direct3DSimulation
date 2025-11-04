@@ -31,6 +31,9 @@ void ModelRenderScene::Update()
 	if (Input::Get()->IsKeyDown(VK_F4)) {
 		collider->FitSize(model->GetMeshes());
 		collider->SetLocalScale(model->GetLocalScale());
+		model->UpdateWorld();
+
+//		model->SetLocalPosition();
 	}
 
 	collider->UpdateWorld();

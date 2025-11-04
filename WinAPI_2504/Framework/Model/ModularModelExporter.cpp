@@ -257,9 +257,10 @@ void ModularModelExporter::ReadBone(aiMesh* mesh, vector<VertexWeights>& vertexW
 
 void ModularModelExporter::WriteMesh(string partName, const vector<MeshData*>& meshes, const vector<NodeData*>& nodes, const vector<BoneData*>& bones)
 {
-    string path = "Resources/Models/Meshes/" + this->name + "/" + partName + ".mesh";
+//    string path = "Resources/Models/Meshes/" + this->name + "/" + partName + ".mesh";
+    string path = "Resources/Models/Meshes/" + this->name + ".mesh";
     Utility::CreateFolders(path);
-
+    
     BinaryWriter* writer = new BinaryWriter(path);
 
     writer->UInt(meshes.size());
