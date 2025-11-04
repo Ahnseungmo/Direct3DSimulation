@@ -3,7 +3,7 @@
 
 ModelRenderScene::ModelRenderScene()
 {
-	model = new Model("SM_Barrel_2");
+	model = new Model("SM_Wardrobe_1");
 	collider = new BoxCollider();
 	model->SetParent(collider);
 
@@ -23,18 +23,20 @@ ModelRenderScene::~ModelRenderScene()
 
 void ModelRenderScene::Update()
 {
-	grid->UpdateWorld();
-	model->UpdateWorld();
-	model2->UpdateWorld();
-
 
 	if (Input::Get()->IsKeyDown(VK_F4)) {
 		collider->FitSize(model->GetMeshes());
 		collider->SetLocalScale(model->GetLocalScale());
+		model->SetLocalPosition(0, 0, 0);
 		model->UpdateWorld();
 
-//		model->SetLocalPosition();
+		//		model->SetLocalPosition();
 	}
+
+
+	grid->UpdateWorld();
+	model->UpdateWorld();
+	model2->UpdateWorld();
 
 	collider->UpdateWorld();
 }

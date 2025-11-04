@@ -98,7 +98,7 @@ void ModularModelExportScene::GUIRender()
 			}
 		}
 
-		if (!selectedIndices.empty() && strlen(partName) > 0 && strcmp(partName, "PartName") != 0)
+		if (!selectedIndices.empty() && strlen(partName) > 0/*&& strcmp(partName, "PartName") != 0*/)
 		{
 			exporter->ExportMeshPart(partName, selectedIndices);
 		}
