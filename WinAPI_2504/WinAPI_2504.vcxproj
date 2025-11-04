@@ -211,6 +211,7 @@
     <ClInclude Include="Objects\Collider\SphereCollider.h" />
     <ClInclude Include="Objects\Game\Block.h" />
     <ClInclude Include="Objects\Game\GameBall.h" />
+    <ClInclude Include="Objects\Game\InteriorObject.h" />
     <ClInclude Include="Objects\Game\Steve.h" />
     <ClInclude Include="Objects\Game\Sword.h" />
     <ClInclude Include="Objects\Landscape\Skybox.h" />
@@ -235,6 +236,7 @@
     <ClInclude Include="Scenes\CollisionScene.h" />
     <ClInclude Include="Scenes\CubeScene.h" />
     <ClInclude Include="Scenes\LightScene.h" />
+    <ClInclude Include="Scenes\MapEditorScene.h" />
     <ClInclude Include="Scenes\ModelAnimaionScene.h" />
     <ClInclude Include="Scenes\ModelExportScene.h" />
     <ClInclude Include="Scenes\ModelInstancingScene.h" />
@@ -318,6 +320,7 @@
     <ClCompile Include="Objects\Collider\SphereCollider.cpp" />
     <ClCompile Include="Objects\Game\Block.cpp" />
     <ClCompile Include="Objects\Game\GameBall.cpp" />
+    <ClCompile Include="Objects\Game\InteriorObject.cpp" />
     <ClCompile Include="Objects\Game\Steve.cpp" />
     <ClCompile Include="Objects\Game\Sword.cpp" />
     <ClCompile Include="Objects\Landscape\Skybox.cpp" />
@@ -341,6 +344,7 @@
     <ClCompile Include="Scenes\CollisionScene.cpp" />
     <ClCompile Include="Scenes\CubeScene.cpp" />
     <ClCompile Include="Scenes\LightScene.cpp" />
+    <ClCompile Include="Scenes\MapEditorScene.cpp" />
     <ClCompile Include="Scenes\ModelAnimaionScene.cpp" />
     <ClCompile Include="Scenes\ModelExportScene.cpp" />
     <ClCompile Include="Scenes\ModelInstancingScene.cpp" />

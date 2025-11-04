@@ -17,7 +17,7 @@
 #include "Scenes/ParticleEditorScene.h"
 #include "Scenes/WaterScene.h"
 #include "Scenes/ModularModelExportScene.h"
-
+#include "Scenes/MapEditorScene.h"
 GameManager::GameManager()
 {
 	Create();
@@ -29,9 +29,9 @@ GameManager::GameManager()
 	//SCENE->AddScene("Game", new BlockScene());
 	//SCENE->AddScene("Game", new LightScene());
 	//SCENE->AddScene("Export", new ModelExportScene());
-	SCENE->AddScene("Game", new ModelRenderScene());
+	//SCENE->AddScene("Game", new ModelRenderScene());
 	//SCENE->AddScene("Game", new ModelAnimationScene());
-	//SCENE->AddScene("Game", new CharacterScene());
+	//SCENE->AddScene("Game", new MapEditorScene());
 	//SCENE->AddScene("Game", new ModelInstancingScene());
 	//SCENE->AddScene("Game", new TerrainScene());
 	//SCENE->AddScene("Game", new TerrainEditorScene());
@@ -39,6 +39,7 @@ GameManager::GameManager()
 	//SCENE->AddScene("Game", new ParticleEditorScene());
 	//SCENE->AddScene("Game", new WaterScene());
 	//SCENE->AddScene("Game", new ModularModelExportScene());
+	SCENE->AddScene("Game", new MapEditorScene());
 
 	SCENE->ChangeScene("Game");
 }
