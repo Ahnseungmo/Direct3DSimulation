@@ -12,7 +12,7 @@ MapEditorScene::MapEditorScene()
 	for (int i = 0; i < 100; i++)
 	{
 		InteriorObject* barrel = InteriorManager::Get()->Add("SM_Barrel_2", {(float)i,0,0});
-		InteriorObject* floor = InteriorManager::Get()->Add("SM_Floor", { (float)i,0,0 });
+		InteriorObject* floor = InteriorManager::Get()->Add("SM_Floor", { (float)i*4,0,0 });
 		InteriorObject* basket = InteriorManager::Get()->Add("SM_Basket", { (float)i,0,0 });
 		InteriorObject* table = InteriorManager::Get()->Add("SM_Table_1", { (float)i,0,0 });
 

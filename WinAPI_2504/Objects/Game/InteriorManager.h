@@ -15,6 +15,8 @@ public:
 
     InteriorObject* Add(string meshName, Vector3 position = { 0, 0, 0 }, Vector3 rotation = { 0, 0, 0 }, Vector3 scale = { 1, 1, 1 });
 
+    InteriorObject* GetInteriorObject(string meshName, int index) { objects.at(meshName).at(index); }
+
     void Edit();
 
 private:

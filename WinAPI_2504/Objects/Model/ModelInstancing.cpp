@@ -49,11 +49,13 @@ void ModelInstancing::Edit()
 
     if (ImGui::Button("Add"))
         Add();
-
+    /*
     for (Transform* transform : transforms)
         transform->Edit();
+    */
 
     Model::Edit();
+
 }
 
 Transform* ModelInstancing::Add()

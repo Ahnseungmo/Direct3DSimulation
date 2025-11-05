@@ -40,6 +40,7 @@
 #include <assert.h>
 #include <algorithm>
 #include <queue>
+#include <iterator>
 
 #include <d3d11.h>
 #include <d3dcompiler.h>

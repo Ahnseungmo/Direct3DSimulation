@@ -33,6 +33,8 @@ void Transform::Edit()
 {
 	if (ImGui::TreeNode((tag + "_Transform").c_str()))
 	{
+		ImGui::Checkbox("Active", &isActive);
+
 		ImGui::DragFloat3("Pos", (float*)&localPosition, 1.0f);
 
 		Float3 rot;
