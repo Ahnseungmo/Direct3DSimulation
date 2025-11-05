@@ -72,14 +72,15 @@ InteriorObject* InteriorManager::Add(string meshName, Vector3 position, Vector3 
     Transform* instanceTransform = instancingModels[meshName]->Add();
     if (!instanceTransform) return nullptr; 
     InteriorObject* obj = new InteriorObject(meshName);
-    obj->SetParent(instanceTransform);
+//    obj->SetParent(instanceTransform);
+    instanceTransform->SetParent(obj);
     obj->SetInstancing(true);
 
-    objects[meshName].push_back(obj);
-    instanceTransform->SetLocalPosition(position);
-    instanceTransform->SetLocalRotation(rotation);
-    instanceTransform->SetLocalScale(scale);
+    obj->SetLocalPosition(position);
+    obj->SetLocalRotation(rotation);
+    obj->SetLocalScale(scale);
 
+    objects[meshName].push_back(obj);
     return obj;
 }
 
