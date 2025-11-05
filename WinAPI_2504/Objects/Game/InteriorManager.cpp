@@ -42,6 +42,17 @@ void InteriorManager::Render()
     {
         pair.second->Render();
     }
+
+    for (auto const& pair : objects)
+    {
+        for (InteriorObject* obj : pair.second)
+        {
+            if (obj->IsActive())
+            {
+                obj->Render();
+            }
+        }
+    }
 }
 
 void InteriorManager::AddMeshType(string meshName, UINT poolSize)
@@ -65,5 +76,18 @@ InteriorObject* InteriorManager::Add(string meshName, Vector3 position, Vector3 
     obj->SetInstancing(true);
 
     objects[meshName].push_back(obj);
+    instanceTransform->SetLocalPosition(position);
+    instanceTransform->SetLocalRotation(rotation);
+    instanceTransform->SetLocalScale(scale);
+
     return obj;
+}
+
+
+void InteriorManager::Edit()
+{
+    for (auto const& pair : instancingModels)
+    {
+        pair.second->Edit();
+    }
 }

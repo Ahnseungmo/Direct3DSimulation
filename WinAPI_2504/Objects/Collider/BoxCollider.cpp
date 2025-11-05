@@ -177,7 +177,7 @@ void BoxCollider::FitSize(vector<ModelMesh*> meshes)
 	size = maxPos - minPos;
 
 	Vector3 center = (minPos + maxPos) * 0.5f;
-//	SetLocalPosition(center);
+	SetLocalPosition(center);
 
 	UpdateMesh();
 }

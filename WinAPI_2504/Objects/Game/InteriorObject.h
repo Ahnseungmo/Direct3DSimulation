@@ -10,6 +10,8 @@ public:
 	void Update();
 	void Render();
 
+	void Edit();
+
 	void SetInstancing(bool isInstanced) { this->isInstanced = isInstanced; }
 
 	Model* GetModel() { return model; }
