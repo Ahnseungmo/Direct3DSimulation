@@ -177,6 +177,7 @@ typedef function<void()> Event;
 #include "Objects/Game/Steve.h"
 #include "Objects/Game/Sword.h"
 #include "Objects/Game/InteriorObject.h"
+#include "Objects/Game/InteriorManager.h"
 
 
 #include "Objects/Character/Naruto.h"

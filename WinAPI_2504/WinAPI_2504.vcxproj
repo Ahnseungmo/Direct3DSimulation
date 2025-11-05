@@ -211,6 +211,7 @@
     <ClInclude Include="Objects\Collider\SphereCollider.h" />
     <ClInclude Include="Objects\Game\Block.h" />
     <ClInclude Include="Objects\Game\GameBall.h" />
+    <ClInclude Include="Objects\Game\InteriorManager.h" />
     <ClInclude Include="Objects\Game\InteriorObject.h" />
     <ClInclude Include="Objects\Game\Steve.h" />
     <ClInclude Include="Objects\Game\Sword.h" />
@@ -320,6 +321,7 @@
     <ClCompile Include="Objects\Collider\SphereCollider.cpp" />
     <ClCompile Include="Objects\Game\Block.cpp" />
     <ClCompile Include="Objects\Game\GameBall.cpp" />
+    <ClCompile Include="Objects\Game\InteriorManager.cpp" />
     <ClCompile Include="Objects\Game\InteriorObject.cpp" />
     <ClCompile Include="Objects\Game\Steve.cpp" />
     <ClCompile Include="Objects\Game\Sword.cpp" />
