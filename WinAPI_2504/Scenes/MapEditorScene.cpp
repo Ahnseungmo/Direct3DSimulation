@@ -10,7 +10,7 @@ MapEditorScene::MapEditorScene()
 	InteriorManager::Get()->AddMeshType("SM_Basket", 200);
 	InteriorManager::Get()->AddMeshType("SM_Table_1", 200);
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 2; i++)
 	{
 		InteriorObject* barrel = InteriorManager::Get()->Add("SM_Barrel_2", {(float)i,0,0});
 		InteriorObject* floor = InteriorManager::Get()->Add("SM_Floor", { (float)i*4,0,0 });
@@ -19,7 +19,8 @@ MapEditorScene::MapEditorScene()
 
 		if (i == 0) barrel->SetLocalPosition(0,1,0);
 	}
-	
+
+
 }
 
 MapEditorScene::~MapEditorScene()
@@ -36,15 +37,22 @@ void MapEditorScene::Update()
 void MapEditorScene::PreRender()
 {
 
-	InteriorManager::Get()->RenderThumbnails();
 
+
+	InteriorManager::Get()->RenderThumbnails();
 	
 	ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
 	DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
+	
 	Environment::Get()->SetRender();
-
 }
-
+/*
+void Shadow::SetRenderTarget()
+{
+	renderTarget->Set(depthStencil, Float4(1, 1, 1, 1));
+	SetViewProjection();
+}
+*/
 void MapEditorScene::Render()
 {
 	grid->Render();
@@ -75,4 +83,7 @@ void MapEditorScene::GUIRender()
 		}
 	}
 	ImGui::End();
+
+
+	InteriorManager::Get()->GetTumnail("SM_Barrel_2").camera->Edit();
 }
