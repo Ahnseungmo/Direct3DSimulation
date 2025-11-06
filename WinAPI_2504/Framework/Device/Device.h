@@ -15,6 +15,9 @@ public:
 	ID3D11Device* GetDevice() { return device; }
 	ID3D11DeviceContext* GetDeviceContext() { return deviceContext; }
 
+	ID3D11RenderTargetView* GetRTV() { return renderTargetView; }
+	ID3D11DepthStencilView* GetDSV() { return depthStencilView; }
+
 private:
 	ID3D11Device* device;//CPU - 직렬, 로드, 연산
 	ID3D11DeviceContext* deviceContext;//GPU - 병렬, 출력

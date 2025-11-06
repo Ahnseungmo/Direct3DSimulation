@@ -25,8 +25,7 @@ void RenderTarget::Set(DepthStencil* depthStencil, Float4 clearColor)
     DC->ClearRenderTargetView(rtv, (float*)&clearColor);
     depthStencil->Clear();
 
-    Environment::Get()->SetRender();
-    Environment::Get()->SetViewport(width, height);
+	Environment::Get()->SetViewport(width, height);
 }
 
 void RenderTarget::SetMulti(RenderTarget** targets, UINT count, DepthStencil* depthStencil, Float4 clearColor)

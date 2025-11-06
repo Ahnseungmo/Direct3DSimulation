@@ -1,6 +1,7 @@
 #include "Framework.h"
 #include "MapEditorScene.h"
 
+
 MapEditorScene::MapEditorScene()
 {
 	grid = new Grid();
@@ -34,6 +35,14 @@ void MapEditorScene::Update()
 
 void MapEditorScene::PreRender()
 {
+
+	InteriorManager::Get()->RenderThumbnails();
+
+	
+	ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
+	DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
+	Environment::Get()->SetRender();
+
 }
 
 void MapEditorScene::Render()
@@ -52,4 +61,18 @@ void MapEditorScene::GUIRender()
 {
 	InteriorManager::Get()->Edit();
 
+	ImGui::Begin("Interior Objects");
+	auto& models = InteriorManager::Get()->GetModelInstancing();
+	for (auto const& pair : models)
+	{
+		ID3D11ShaderResourceView* textureID = InteriorManager::Get()->GetThumbnailSRV(pair.first);
+		if (textureID)
+		{
+
+			if (ImGui::ImageButton(pair.first.c_str(), (ImTextureID)textureID, { 100, 100 }))
+			{
+			}
+		}
+	}
+	ImGui::End();
 }

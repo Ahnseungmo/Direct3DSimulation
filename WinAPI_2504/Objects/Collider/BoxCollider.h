@@ -22,7 +22,8 @@ public:
 	bool IsCapsuleCollision(CapsuleCollider* collider) override;
 	void FitSize(vector<ModelMesh*> meshes);
 	void GetOBB(ObbDesc& desc);
-
+	
+	Vector3 GetSize() { return size; }
 private:
 	bool IsSeperateAxis(Vector3 D, Vector3 axis, ObbDesc box1, ObbDesc box2);
 
@@ -31,6 +32,7 @@ private:
 	void SaveBox();
 	void LoadBox();
 
+	
 private:
 	void MakeMesh() override;
 

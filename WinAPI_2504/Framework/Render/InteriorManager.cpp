@@ -118,16 +118,17 @@ void InteriorManager::AddMeshType(string meshName, UINT poolSize)
     thumbnail.camera = new Camera();
     thumbnail.camera->SetLocalPosition(0, 0, -1.0f);
 
-
-    BoxCollider* collider = sampleObject; 
+    // 모델의 크기에 맞게 카메라 위치 조정
+    BoxCollider* collider = sampleObject; // InteriorObject는 BoxCollider를 상속
     Vector3 size = collider->GetSize();
     float maxSize = max(size.x, max(size.y, size.z));
     
-
+    // 모델의 중심을 바라보도록 카메라 위치 설정
     Vector3 center = collider->GetGlobalPosition();
     thumbnail.camera->SetLocalPosition(center.x, center.y + size.y * 0.5f, center.z - maxSize * 2.0f);
     thumbnail.camera->UpdateWorld();
 
+    // 0번 오브젝트는 인스턴싱되지 않고 직접 렌더링되도록 설정
     sampleObject->SetInstancing(false);
 
 }
@@ -154,6 +155,7 @@ InteriorObject* InteriorManager::Add(string meshName, Vector3 position, Vector3 
 
 void InteriorManager::Edit()
 {
+//    iterator it;
     for (auto const& pair : instancingModels)
     {
         pair.second->Edit();
