@@ -10,6 +10,7 @@ private:
         RenderTarget* renderTarget;
         DepthStencil* depthStencil;
         Camera* camera;
+        bool isGenerated = false;
     };
 
 public:
@@ -39,6 +40,4 @@ private:
     unordered_map<string, vector<InteriorObject*>> objects;
 
     unordered_map<string, Thumbnail> thumbnails;
-//    unordered_map<string, Texture> textures;
-
 };

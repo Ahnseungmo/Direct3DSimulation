@@ -31,16 +31,11 @@ void InteriorManager::Update()
         bool first = true;
         for (InteriorObject* obj : pair.second)
         {
-            /*
             if (first) { first = false; continue; }
             if (obj->IsActive())
             {
                 obj->UpdateWorld();
             }
-            */
-
-            obj->UpdateWorld();
-
         }
     }
 
@@ -64,16 +59,11 @@ void InteriorManager::Render()
         bool first = true;
         for (InteriorObject* obj : pair.second)
         {
-            /*
             if (first) { first = false; continue; }
             if (obj->IsActive())
             {
                 obj->Render();
             }
-            */
-
-            obj->Render();
-
         }
     }
 }
@@ -87,21 +77,16 @@ void InteriorManager::RenderThumbnails()
         Thumbnail& thumbnail = thumbnails.at(pair.first);
         thumbnail.renderTarget->Set(thumbnail.depthStencil);
 
-        // 0?? ???? ????????? ??????
+
         InteriorObject* sampleObject = objects.at(pair.first)[0];
         if (sampleObject)
         {
-            // ?????? ?????? ??/???????? ????
+       
             thumbnail.camera->SetView();
-            sampleObject->UpdateWorld();
+
             sampleObject->Render();
         }
     }
-
-    // ½æ³×ÀÏ ·»´õ¸µ ÈÄ ¸ÞÀÎ ·»´õ Å¸°ÙÀ¸·Î º¹¿ø
-    ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
-    DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
-    Environment::Get()->SetRender(); // ¸ÞÀÎ ºäÆ÷Æ® ¹× ·»´õ¸µ »óÅÂ ¼³Á¤
 }
 
 ID3D11ShaderResourceView* InteriorManager::GetThumbnailSRV(const string& name)
@@ -120,13 +105,11 @@ void InteriorManager::AddMeshType(string meshName, UINT poolSize)
     instancingModels[meshName] = new ModelInstancing(meshName, poolSize);
     objects[meshName] = {};
 
-    // 0???? ?????? ?? ????? ?????? ????
     instancingModels[meshName]->Add();
     InteriorObject* sampleObject = new InteriorObject(meshName);
     sampleObject->SetTag(meshName + "_0");
     objects[meshName].push_back(sampleObject);
 
-    // ?????? ???????? ????? ????
     Thumbnail& thumbnail = thumbnails[meshName];
     thumbnail.renderTarget = new RenderTarget(100, 100);
     thumbnail.depthStencil = new DepthStencil(100, 100);
@@ -134,14 +117,15 @@ void InteriorManager::AddMeshType(string meshName, UINT poolSize)
     thumbnail.camera->SetLocalPosition(0, 0, -1.0f);
 
 
-    BoxCollider* collider = sampleObject; 
+    BoxCollider* collider = sampleObject;
     Vector3 size = collider->GetSize();
     float maxSize = max(size.x, max(size.y, size.z));
-    
+
 
     Vector3 center = collider->GetGlobalPosition();
     thumbnail.camera->SetLocalPosition(center.x, center.y + size.y * 0.5f, center.z - maxSize * 2.0f);
     thumbnail.camera->UpdateWorld();
+
 
     sampleObject->SetInstancing(false);
 
@@ -153,7 +137,7 @@ InteriorObject* InteriorManager::Add(string meshName, Vector3 position, Vector3 
         return nullptr;
 
     Transform* instanceTransform = instancingModels[meshName]->Add();
-    if (!instanceTransform) return nullptr; 
+    if (!instanceTransform) return nullptr;
     InteriorObject* obj = new InteriorObject(meshName);
     instanceTransform->SetParent(obj);
     obj->SetInstancing(true);
@@ -169,6 +153,7 @@ InteriorObject* InteriorManager::Add(string meshName, Vector3 position, Vector3 
 
 void InteriorManager::Edit()
 {
+    //    iterator it;
     for (auto const& pair : instancingModels)
     {
         pair.second->Edit();
@@ -178,11 +163,11 @@ void InteriorManager::Edit()
 
     for (auto pair : objects)
     {
- //       /*
-        for (InteriorObject* obj : pair.second) // 0?? ???? ????????? Edit ??? ????
-            if(obj != nullptr)
+
+        for (InteriorObject* obj : pair.second) 
+            if (obj != nullptr)
                 obj->Edit();
-   //     */
+
     }
 
 }
