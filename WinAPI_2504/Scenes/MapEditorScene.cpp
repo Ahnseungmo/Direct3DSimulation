@@ -38,11 +38,6 @@ void MapEditorScene::PreRender()
 
 	InteriorManager::Get()->RenderThumbnails();
 
-	
-	ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
-	DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
-	Environment::Get()->SetRender();
-
 }
 
 void MapEditorScene::Render()
@@ -54,11 +49,18 @@ void MapEditorScene::Render()
 
 void MapEditorScene::PostRender()
 {
-
+    // GUIRender에서 썸네일 텍스처 사용이 끝났으므로,
+    // 메인 렌더링을 위해 원래 렌더 타겟으로 복원합니다.
+    ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
+    DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
+    Environment::Get()->SetRender();
 }
 
 void MapEditorScene::GUIRender()
 {
+
+
+
 	InteriorManager::Get()->Edit();
 
 	ImGui::Begin("Interior Objects");

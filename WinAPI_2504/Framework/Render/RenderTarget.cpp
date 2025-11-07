@@ -17,15 +17,16 @@ RenderTarget::~RenderTarget()
 
 void RenderTarget::Set(DepthStencil* depthStencil, Float4 clearColor)
 {
-    ID3D11ShaderResourceView* srv = nullptr;
-    DC->PSSetShaderResources(0, 1, &srv);
+    // 이전에 바인딩된 리소스가 렌더 타겟으로 다시 바인딩되는 것을 방지하기 위해 SRV를 해제합니다.
+    ID3D11ShaderResourceView* srvs[16] = { nullptr };
+    DC->PSSetShaderResources(0, 16, srvs);
 
     DC->OMSetRenderTargets(1, &rtv, depthStencil->GetDSV());
 
     DC->ClearRenderTargetView(rtv, (float*)&clearColor);
     depthStencil->Clear();
 
-	Environment::Get()->SetViewport(width, height);
+    Environment::Get()->SetViewport(width, height);
 }
 
 void RenderTarget::SetMulti(RenderTarget** targets, UINT count, DepthStencil* depthStencil, Float4 clearColor)

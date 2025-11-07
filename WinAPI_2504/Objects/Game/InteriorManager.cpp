@@ -77,16 +77,21 @@ void InteriorManager::RenderThumbnails()
         Thumbnail& thumbnail = thumbnails.at(pair.first);
         thumbnail.renderTarget->Set(thumbnail.depthStencil);
 
-        // 0번 샘플 오브젝트를 렌더링
+        // 0?? ???? ????????? ??????
         InteriorObject* sampleObject = objects.at(pair.first)[0];
         if (sampleObject)
         {
-            // 썸네일 카메라로 뷰/프로젝션 설정
+            // ?????? ?????? ??/???????? ????
             thumbnail.camera->SetView();
 
             sampleObject->Render();
         }
     }
+
+    // 썸네일 렌더링 후 메인 렌더 타겟으로 복원
+    ID3D11RenderTargetView* rtv = Device::Get()->GetRTV();
+    DC->OMSetRenderTargets(1, &rtv, Device::Get()->GetDSV());
+    Environment::Get()->SetRender(); // 메인 뷰포트 및 렌더링 상태 설정
 }
 
 ID3D11ShaderResourceView* InteriorManager::GetThumbnailSRV(const string& name)
@@ -105,13 +110,13 @@ void InteriorManager::AddMeshType(string meshName, UINT poolSize)
     instancingModels[meshName] = new ModelInstancing(meshName, poolSize);
     objects[meshName] = {};
 
-    // 0번에 썸네일 및 샘플용 데이터 등록
+    // 0???? ?????? ?? ????? ?????? ????
     instancingModels[meshName]->Add();
     InteriorObject* sampleObject = new InteriorObject(meshName);
     sampleObject->SetTag(meshName + "_0");
     objects[meshName].push_back(sampleObject);
 
-    // 썸네일 렌더링용 리소스 생성
+    // ?????? ???????? ????? ????
     Thumbnail& thumbnail = thumbnails[meshName];
     thumbnail.renderTarget = new RenderTarget(100, 100);
     thumbnail.depthStencil = new DepthStencil(100, 100);
@@ -164,7 +169,7 @@ void InteriorManager::Edit()
     for (auto pair : objects)
     {
  //       /*
-        for (InteriorObject* obj : pair.second) // 0번 샘플 오브젝트도 Edit 창에 표시됨
+        for (InteriorObject* obj : pair.second) // 0?? ???? ????????? Edit ??? ????
             if(obj != nullptr)
                 obj->Edit();
    //     */
