@@ -31,11 +31,16 @@ void InteriorManager::Update()
         bool first = true;
         for (InteriorObject* obj : pair.second)
         {
+            /*
             if (first) { first = false; continue; }
             if (obj->IsActive())
             {
                 obj->UpdateWorld();
             }
+            */
+
+            obj->UpdateWorld();
+
         }
     }
 
@@ -59,11 +64,16 @@ void InteriorManager::Render()
         bool first = true;
         for (InteriorObject* obj : pair.second)
         {
+            /*
             if (first) { first = false; continue; }
             if (obj->IsActive())
             {
                 obj->Render();
             }
+            */
+
+            obj->Render();
+
         }
     }
 }
@@ -83,7 +93,7 @@ void InteriorManager::RenderThumbnails()
         {
             // ?????? ?????? ??/???????? ????
             thumbnail.camera->SetView();
-
+            sampleObject->UpdateWorld();
             sampleObject->Render();
         }
     }
