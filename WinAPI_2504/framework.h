@@ -180,6 +180,9 @@ typedef function<void()> Event;
 #include "Objects/Game/InteriorObject.h"
 #include "Objects/Game/InteriorManager.h"
 
+#include "Objects/Game/Room.h"
+#include "Objects/Game/RoomManager.h"
+
 
 #include "Objects/Character/Naruto.h"
 

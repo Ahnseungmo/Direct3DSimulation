@@ -14,4 +14,7 @@ public:
 
 private:
 	Grid* grid;
+
+	Room* room;
+	Room* room2;
 };

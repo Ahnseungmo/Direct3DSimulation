@@ -9,7 +9,8 @@ MapEditorScene::MapEditorScene()
 	InteriorManager::Get()->AddMeshType("SM_Floor", 200);
 	InteriorManager::Get()->AddMeshType("SM_Basket", 200);
 	InteriorManager::Get()->AddMeshType("SM_Table_1", 200);
-
+	InteriorManager::Get()->AddMeshType("SM_Wall_1A", 200);
+	/*
 	for (int i = 0; i < 100; i++)
 	{
 		InteriorObject* barrel = InteriorManager::Get()->Add("SM_Barrel_2", {(float)i,0,0});
@@ -19,7 +20,16 @@ MapEditorScene::MapEditorScene()
 
 		if (i == 0) barrel->SetLocalPosition(0,1,0);
 	}
-	
+	*/
+	/*
+	room = new Room();
+	room2 = new Room();
+	room2->SetLocalPosition(4,0,0);
+	room2->UpdateWorld();
+	*/
+
+	RoomManager::Get();
+
 }
 
 MapEditorScene::~MapEditorScene()
@@ -30,6 +40,7 @@ MapEditorScene::~MapEditorScene()
 void MapEditorScene::Update()
 {
 	InteriorManager::Get()->Update();
+	RoomManager::Get()->Update();
 
 }
 
@@ -77,4 +88,5 @@ void MapEditorScene::GUIRender()
 		}
 	}
 	ImGui::End();
+
 }

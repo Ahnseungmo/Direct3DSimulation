@@ -213,6 +213,8 @@
     <ClInclude Include="Objects\Game\GameBall.h" />
     <ClInclude Include="Objects\Game\InteriorManager.h" />
     <ClInclude Include="Objects\Game\InteriorObject.h" />
+    <ClInclude Include="Objects\Game\Room.h" />
+    <ClInclude Include="Objects\Game\RoomManager.h" />
     <ClInclude Include="Objects\Game\Steve.h" />
     <ClInclude Include="Objects\Game\Sword.h" />
     <ClInclude Include="Objects\Landscape\Skybox.h" />
@@ -323,6 +325,8 @@
     <ClCompile Include="Objects\Game\GameBall.cpp" />
     <ClCompile Include="Objects\Game\InteriorManager.cpp" />
     <ClCompile Include="Objects\Game\InteriorObject.cpp" />
+    <ClCompile Include="Objects\Game\Room.cpp" />
+    <ClCompile Include="Objects\Game\RoomManager.cpp" />
     <ClCompile Include="Objects\Game\Steve.cpp" />
     <ClCompile Include="Objects\Game\Sword.cpp" />
     <ClCompile Include="Objects\Landscape\Skybox.cpp" />
