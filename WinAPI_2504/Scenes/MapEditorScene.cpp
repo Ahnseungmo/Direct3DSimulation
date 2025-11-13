@@ -39,6 +39,12 @@ MapEditorScene::~MapEditorScene()
 
 void MapEditorScene::Update()
 {
+
+	if (Input::Get()->IsKeyDown(VK_F3)) {
+		RoomManager::Get()->SetEditMode(!RoomManager::Get()->GetEditMode());
+	}
+
+
 	InteriorManager::Get()->Update();
 	RoomManager::Get()->Update();
 

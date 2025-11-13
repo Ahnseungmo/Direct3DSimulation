@@ -182,6 +182,9 @@ typedef function<void()> Event;
 
 #include "Objects/Game/Room.h"
 #include "Objects/Game/RoomManager.h"
+#include "Objects/Game/Item.h"
+
+#include "Objects/Game/TableSet.h"
 
 
 #include "Objects/Character/Naruto.h"
