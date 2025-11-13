@@ -68,24 +68,25 @@ void RoomManager::AddRoomByNormal(Room* baseRoom, const Vector3& normal)
 
     // 클릭한 벽 기준으로 새 방 위치 설정
     if (fabs(normal.z - 1.0f) < 0.1f) {       // 북쪽 벽 클릭
-        newPos.z += roomSpacing;              // 북쪽으로 새 방 생성
-        baseWallDir = Room::NORTH;
-        newWallDir = Room::SOUTH;
-    }
-    else if (fabs(normal.z + 1.0f) < 0.1f) {  // 남쪽 벽 클릭
-        newPos.z -= roomSpacing;              // 남쪽으로 새 방 생성
+        newPos.z -= roomSpacing;              // 북쪽으로 새 방 생성
         baseWallDir = Room::SOUTH;
         newWallDir = Room::NORTH;
     }
-    else if (fabs(normal.x - 1.0f) < 0.1f) {  // 동쪽 벽 클릭
-        newPos.x += roomSpacing;              // 동쪽으로 새 방 생성
-        baseWallDir = Room::EAST;
-        newWallDir = Room::WEST;
+    else if (fabs(normal.z + 1.0f) < 0.1f) {  // 남쪽 벽 클릭
+        newPos.z += roomSpacing;              // 남쪽으로 새 방 생성
+        baseWallDir = Room::NORTH;
+        newWallDir = Room::SOUTH;
+
     }
-    else if (fabs(normal.x + 1.0f) < 0.1f) {  // 서쪽 벽 클릭
-        newPos.x -= roomSpacing;              // 서쪽으로 새 방 생성
+    else if (fabs(normal.x - 1.0f) < 0.1f) {  // 동쪽 벽 클릭
+        newPos.x -= roomSpacing;              // 동쪽으로 새 방 생성
         baseWallDir = Room::WEST;
         newWallDir = Room::EAST;
+    }
+    else if (fabs(normal.x + 1.0f) < 0.1f) {  // 서쪽 벽 클릭
+        newPos.x += roomSpacing;              // 서쪽으로 새 방 생성
+        baseWallDir = Room::EAST;
+        newWallDir = Room::WEST;
     }
     else
     {
