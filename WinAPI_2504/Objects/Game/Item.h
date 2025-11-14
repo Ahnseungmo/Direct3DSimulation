@@ -20,5 +20,4 @@ protected:
 
 	virtual void Use() {}
 	virtual void RenderIcon() {}
-	virtual ~Item() = default;
 };
