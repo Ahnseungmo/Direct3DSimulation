@@ -3,6 +3,7 @@
 InteriorObject::InteriorObject()
 	: model(nullptr)
 {
+
 }
 
 InteriorObject::InteriorObject(string meshName)

@@ -73,6 +73,8 @@ float4 PS(PixelInput input) : SV_TARGET
             color += CalcPoint(material, lights[i]);
         else if (lights[i].type == 2)
             color += CalcSpot(material, lights[i]);
+        else if (lights[i].type == 3)
+            color += CalcGlobal(material, lights[i]);
     }
 	
     float4 ambient = CalcAmbient(material);

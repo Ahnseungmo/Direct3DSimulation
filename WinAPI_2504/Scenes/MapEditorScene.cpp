@@ -4,6 +4,8 @@
 
 MapEditorScene::MapEditorScene()
 {
+	Environment::Get()->GetLight(0)->type = 3;
+	
 	grid = new Grid();
 	InteriorManager::Get()->AddMeshType("SM_Barrel_2", 200);
 	InteriorManager::Get()->AddMeshType("SM_Floor", 200);

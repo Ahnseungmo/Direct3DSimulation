@@ -45,6 +45,8 @@ float4 PS(LightPixelInput input) : SV_TARGET
             color += CalcSpot(material, lights[i]);
         //else if (lights[i].type == 3)
         //    color += CalcCapsule(material, lights[i]);
+        else if (lights[i].type == 3)
+            color += CalcGlobal(material, lights[i]);
     }
     
     return ambient + color + emissive;

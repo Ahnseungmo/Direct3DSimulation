@@ -211,7 +211,35 @@ float4 CalcSpot(Material material, Light light)
     
     return finalColor * material.diffuseColor * attenuation * coneAttenuation;
 }
+float4 CalcGlobal(Material material, Light light)
+{
 
+    float3 N = normalize(material.normal);
+    
+    // Global Light 방향 (씬 전체에서 비추는 가상 방향)
+    float3 L = normalize(-light.direction);
+
+    // Lambert Diffuse
+    float NdotL = max(dot(N, L), 0.0f);
+
+    // Ambient 색상 : 전체 씬의 기본 밝기
+    float3 ambient = material.diffuseColor.rgb * 0.5; // 0.5 정도면 천장/벽 밝기 적절
+
+    // Diffuse : 방향성 있는 Global 라이트
+    float3 diffuse = material.diffuseColor.rgb * light.color.rgb * NdotL * 0.5;
+    // 0.5로 줄이면 과도하게 밝지 않고 입체감 유지
+
+    // Specular
+    float3 viewDir = float3(0, 0, 1);
+    float3 reflectDir = reflect(-L, N);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), shininess);
+    float3 specular = material.specularIntensity.rgb * light.color.rgb * spec;
+
+    float3 finalColor = ambient + diffuse + specular;
+
+    return float4(finalColor, 1.0f);
+
+}
 //float4 CalcCapsule(Material material, Light light)
 //{
 //    float3 direction = normalize(light.direction);
