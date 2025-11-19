@@ -1,23 +1,19 @@
 #pragma once
-
-class Item : public BoxCollider{
-
+class Item
+{
 public:
-	Item();
-	~Item();
-	void AddObject(InteriorObject* obj);
-//	void AddObject();
+    Item(string id);
+    ~Item();
 
+    void AddPart(string meshName, Vector3 pos, Vector3 rot, Vector3 scale);
+
+    const vector<InteriorObject*>& GetObjects() const { return parts; }
+
+    void Update();
+    void Render();
+    void Edit();
 
 private:
-	vector<InteriorObject*> objects;
-	vector<ModelMesh*> meshes;
-
-protected:
-	string id;
-	string name;
-	bool stackable = true;
-
-	virtual void Use() {}
-	virtual void RenderIcon() {}
+    string id;
+    vector<InteriorObject*> parts;
 };

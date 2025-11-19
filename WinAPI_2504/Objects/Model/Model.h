@@ -5,7 +5,7 @@ class Model : public Transform
 public:
 	Model(string name);
 	~Model();
-	
+
 	void Render();
 	void Edit();
 
@@ -14,7 +14,7 @@ public:
 	void SetPixelShader(wstring file);
 
 	vector<ModelMesh*> GetMeshes() { return meshes; }
-
+	string GetName() { return name; }
 private:
 	void ReadMaterial();
 	void ReadMesh();

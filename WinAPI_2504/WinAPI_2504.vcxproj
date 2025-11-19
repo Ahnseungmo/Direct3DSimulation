@@ -214,6 +214,8 @@
     <ClInclude Include="Objects\Game\InteriorManager.h" />
     <ClInclude Include="Objects\Game\InteriorObject.h" />
     <ClInclude Include="Objects\Game\Item.h" />
+    <ClInclude Include="Objects\Game\ItemManager.h" />
+    <ClInclude Include="Objects\Game\ItemPreset.h" />
     <ClInclude Include="Objects\Game\Room.h" />
     <ClInclude Include="Objects\Game\RoomManager.h" />
     <ClInclude Include="Objects\Game\Steve.h" />
@@ -328,6 +330,8 @@
     <ClCompile Include="Objects\Game\InteriorManager.cpp" />
     <ClCompile Include="Objects\Game\InteriorObject.cpp" />
     <ClCompile Include="Objects\Game\Item.cpp" />
+    <ClCompile Include="Objects\Game\ItemManager.cpp" />
+    <ClCompile Include="Objects\Game\ItemPreset.cpp" />
     <ClCompile Include="Objects\Game\Room.cpp" />
     <ClCompile Include="Objects\Game\RoomManager.cpp" />
     <ClCompile Include="Objects\Game\Steve.cpp" />

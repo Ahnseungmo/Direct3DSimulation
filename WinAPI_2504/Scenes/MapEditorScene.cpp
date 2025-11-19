@@ -12,6 +12,7 @@ MapEditorScene::MapEditorScene()
 	InteriorManager::Get()->AddMeshType("SM_Basket", 200);
 	InteriorManager::Get()->AddMeshType("SM_Table_1", 200);
 	InteriorManager::Get()->AddMeshType("SM_Wall_1A", 200);
+	InteriorManager::Get()->AddMeshType("SM_Chair_1", 200);
 	/*
 	for (int i = 0; i < 100; i++)
 	{
@@ -31,7 +32,11 @@ MapEditorScene::MapEditorScene()
 	*/
 
 	RoomManager::Get();
+	// ItemManager에 타입 등록
 
+	// 실제로 TableSet 하나 생성해보기
+	TableSet* table = (TableSet*)ItemManager::Get()->CreateItem("TableSet");
+	
 }
 
 MapEditorScene::~MapEditorScene()
@@ -49,7 +54,7 @@ void MapEditorScene::Update()
 
 	InteriorManager::Get()->Update();
 	RoomManager::Get()->Update();
-
+	ItemManager::Get()->Update();
 }
 
 void MapEditorScene::PreRender()
